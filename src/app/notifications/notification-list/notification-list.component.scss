@@ -1,0 +1,11 @@
+.success {
+  @apply bg-green-500;
+}
+.error {
+  @apply bg-red-300;
+}
+:host {
+  width: 100%;
+  max-width: 384px;
+  @apply fixed bottom-5 right-5;
+}

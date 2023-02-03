@@ -1,0 +1,51 @@
+<section
+  class="flex flex-col justify-start items-center w-screen h-screen px-5 py-10">
+  <div class="w-full max-w-4xl">
+    <form
+      *ngIf="!loading"
+      [formGroup]="productForm"
+      (ngSubmit)="onSubmit()"
+      class="flex flex-col">
+      <app-input
+        id="name"
+        inputType="text"
+        label="Заголовок:"
+        [control]="productForm.get('name')"
+        placeholder="Введите заголовок"
+        controlType="input"
+        className="w-full lg:max-w-40/5 text-sm md:text-base px-3 py-2 border focus:outline-none border-gray-300 focus:border-green-500 focus:ring-1 focus:ring-green-500 rounded-md" />
+
+      <app-input
+        id="description"
+        inputType="text"
+        label="Описание:"
+        [control]="productForm.get('description')"
+        placeholder="Опишите товар"
+        controlType="textarea"
+        className="w-full text-sm md:text-base px-3 py-2 lgpy-5 border focus:outline-none border-gray-300 focus:border-green-500 focus:ring-1 focus:ring-green-500 rounded-md" />
+
+      <app-input
+        id="price"
+        inputType="text"
+        label="Цена:"
+        [control]="productForm.get('price')"
+        placeholder="Введите сумму"
+        controlType="input"
+        className="w-full lg:max-w-40/5 text-sm md:text-base px-3 py-2 border focus:outline-none border-gray-300 focus:border-green-500 focus:ring-1 focus:ring-green-500 rounded-md" />
+
+      <div class="flex flex-row justify-end mt-10">
+        <button
+          class="text-xs lg:text-sm mr-3 px-2 py-2 text-white bg-green-600 border border-green-600 rounded-md shadow-green-500/20 hover:opacity-80">
+          Сохранить
+        </button>
+        <a
+          [routerLink]="'/products'"
+          class="text-xs lg:text-sm px-3 py-2 text-white bg-red-600 border border-red-600 rounded-md shadow-red-500/20 hover:opacity-80 cursor-pointer"
+          >Отмена</a
+        >
+      </div>
+    </form>
+
+    <app-spinner *ngIf="loading"></app-spinner>
+  </div>
+</section>

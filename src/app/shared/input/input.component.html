@@ -1,0 +1,37 @@
+<fieldset class="flex flex-col w-full mb-3">
+  <label
+    [for]="id"
+    class="text-sm sm:text-base md:text-lg ml-1 mb-1 text-gray-500"
+    >{{ label }}</label
+  >
+
+  <input
+    *ngIf="controlType === 'input'"
+    [id]="id"
+    [type]="inputType"
+    [placeholder]="placeholder"
+    [formControl]="control"
+    [className]="className" />
+
+  <textarea
+    *ngIf="controlType === 'textarea'"
+    [id]="id"
+    [placeholder]="placeholder"
+    [formControl]="control"
+    cols="80"
+    rows="10"
+    appFocus
+    [className]="className"></textarea>
+</fieldset>
+<ng-container *ngIf="showErrors()">
+  <div *ngIf="control.errors.required" class="pl-1 mb-2">
+    <p class="text-xs sm:text-sm md:text-base text-red-500">
+      Поле не должно быть пустым
+    </p>
+  </div>
+  <div *ngIf="control.errors.min" class="pl-1 mb-2">
+    <p class="text-xs sm:text-sm md:text-base text-red-500">
+      Значение не может быть равно 0
+    </p>
+  </div>
+</ng-container>

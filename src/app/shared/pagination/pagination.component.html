@@ -1,0 +1,44 @@
+<section class="flex justify-center w-full items-center pt-10">
+  <div class="flex justify-center w-full max-w-7xl items-center">
+    <ul class="flex flex-row">
+      <li class="mr-2 select-none">
+        <button
+          aria-label="Перейти на предыдущую страницу"
+          [attr.aria-disabled]="current === 1"
+          class="text-sm sm:text-base px-3 py-2 text-black bg-white border border-gray-200 hover:opacity-40 rounded-md"
+          [ngClass]="{ disabled: current === 1 }"
+          [disabled]="current === 1"
+          (click)="onPrevious()">
+          сюда
+        </button>
+      </li>
+      <li class="flex items-center mr-2 select-none" *ngFor="let page of pages">
+        <button
+          [attr.aria-current]="page === current ? 'page' : null"
+          [attr.aria-label]="
+            page === current
+              ? 'Current Page, Page ' + page
+              : 'Go to Page ' + page
+          "
+          [ngClass]="{ active: current === page }"
+          class="text-sm sm:text-base px-4 py-2 text-black bg-white border border-gray-200 hover:opacity-40 rounded-md"
+          (click)="onChangePage(page)"
+          (keyup.enter)="onChangePage(page)">
+          {{ page }}
+        </button>
+      </li>
+
+      <li class="mr-2 select-none">
+        <button
+          aria-label="Перейти на следующую страницу"
+          [attr.aria-disabled]="current === totalPages"
+          class="text-sm sm:text-base px-3 py-2 text-black bg-white border border-gray-200 hover:opacity-40 rounded-md"
+          [ngClass]="{ disabled: current === totalPages }"
+          [disabled]="current === totalPages"
+          (click)="onNext()">
+          туда
+        </button>
+      </li>
+    </ul>
+  </div>
+</section>
