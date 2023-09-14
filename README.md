@@ -9,7 +9,7 @@ git clone git@github.com:MiCkEyZzZ/product-editor.git
 cd products-editor
 npm install
 npm run start - for app
-npm run - server - for server
+npm run server - for server
 ```
 
 ## Используемые технологии
